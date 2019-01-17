@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--配置bean-->
+    <bean id="helloWorld" class="com.atguigu.spring.beans.HelloWorld">
+        <property name="name" value="Spring"></property>
+    </bean>
+
+    <!--通过构造方法来配置bean-->
+    <bean id="car" class="com.atguigu.spring.beans.Car">
+        <constructor-arg value="Audi"></constructor-arg>
+        <constructor-arg value="Shanghai"></constructor-arg>
+        <constructor-arg value="300000"></constructor-arg>
+    </bean>
+
+    <!--<bean id="person" class="com.atguigu.spring.beans.Person">
+            <property name="name" value="Tom"></property>
+            <property name="age" value="24"></property>
+            <property name="car" ref="car"></property>
+    </bean>-->
+
+    <bean id="person2" class="com.atguigu.spring.beans.Person">
+        <constructor-arg value="Tom"></constructor-arg>
+        <constructor-arg value="25"></constructor-arg>
+        <constructor-arg ref="car"></constructor-arg>
+        <property name="car.price" value="100000"></property>
+    </bean>
+    <!--测试如何配置集合属性-->
+    <bean id="person3" class="com.atguigu.spring.beans.collection.Person">
+        <property name="name"value="Mike"></property>
+        <property name="age"value="27"></property>
+        <property name="cars">
+            <list>
+                <ref bean="car"/>
+                <ref bean="car"/>
+            </list>
+        </property>
+    </bean>
+</beans>
